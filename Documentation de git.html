@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Git Complète</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">
+                <i class="fas fa-book text-blue-500 mr-2"></i>Documentation Git Complète
+            </h1>
+            <p class="text-lg text-gray-600">Toutes les commandes essentielles et bonnes pratiques pour maîtriser Git
+            </p>
+        </header>
+
+        <!-- Table of Contents -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-list-ul text-blue-500 mr-2"></i> Sommaire
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <a href="#configuration"
+                    class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition">
+                    <i class="fas fa-tools text-blue-500 mr-3"></i>
+                    <span>Configuration</span>
+                </a>
+                <a href="#depots" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition">
+                    <i class="fas fa-box-open text-green-500 mr-3"></i>
+                    <span>Dépôts</span>
+                </a>
+                <a href="#modifications"
+                    class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition">
+                    <i class="fas fa-edit text-yellow-500 mr-3"></i>
+                    <span>Modifications</span>
+                </a>
+                <a href="#branches" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition">
+                    <i class="fas fa-code-branch text-purple-500 mr-3"></i>
+                    <span>Branches</span>
+                </a>
+                <a href="#historique" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition">
+                    <i class="fas fa-history text-red-500 mr-3"></i>
+                    <span>Historique</span>
+                </a>
+                <a href="#bonnes-pratiques"
+                    class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition">
+                    <i class="fas fa-gem text-teal-500 mr-3"></i>
+                    <span>Bonnes pratiques</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Configuration Section -->
+        <section id="configuration" class="mb-12">
+            <div class="flex items-center mb-6">
+                <h2 class="text-3xl font-bold">
+                    <i class="fas fa-tools text-blue-500 mr-3"></i>Configuration
+                </h2>
+                <span
+                    class="ml-auto bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">Essentiel</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Config User -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-blue-50 border-b border-blue-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-user-circle text-blue-500 mr-2"></i>Configurer les informations utilisateur
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Essentiel pour identifier l'auteur de chaque commit dans
+                            l'historique du projet.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Définit votre nom pour tous les commits</span><br>
+                                git config --global user.name "Votre Nom"<br><br>
+                                <span class="text-green-400"># Configure l'email associé à vos contributions</span><br>
+                                git config --global user.email "votre@email.com"
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Config Editor -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-blue-50 border-b border-blue-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-edit text-blue-500 mr-2"></i>Configurer l'éditeur par défaut
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Personnalise l'expérience de rédaction des messages de commit avec
+                            votre éditeur préféré.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Utilise VS Code comme éditeur par défaut</span><br>
+                                git config --global core.editor "code --wait"
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- List Config -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-blue-50 border-b border-blue-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-list text-blue-500 mr-2"></i>Lister toutes les configurations
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Permet de vérifier rapidement toutes les configurations Git
+                            actives sur votre système.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Affiche l'ensemble des paramètres configurés</span><br>
+                                git config --list
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Config Aliases -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-blue-50 border-b border-blue-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-magic text-blue-500 mr-2"></i>Configurer des alias
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Accélère votre workflow en créant des raccourcis pour les
+                            commandes fréquemment utilisées.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Crée des alias pour les commandes courantes</span><br>
+                                git config --global alias.co checkout<br>
+                                git config --global alias.br branch<br>
+                                git config --global alias.ci commit<br>
+                                git config --global alias.st status
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dépôts Section -->
+        <section id="depots" class="mb-12">
+            <div class="flex items-center mb-6">
+                <h2 class="text-3xl font-bold">
+                    <i class="fas fa-box-open text-green-500 mr-3"></i>Dépôts
+                </h2>
+                <span
+                    class="ml-auto bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Fondamental</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Init Repo -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-green-50 border-b border-green-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-plus-circle text-green-500 mr-2"></i>Initialiser un nouveau dépôt
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Première étape pour commencer à suivre un projet avec Git.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Transforme le répertoire courant en dépôt Git</span><br>
+                                git init
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clone Repo -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-green-50 border-b border-green-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-copy text-green-500 mr-2"></i>Cloner un dépôt existant
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Permet de récupérer une copie complète d'un projet existant, avec
+                            tout son historique.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Clone un dépôt dans un dossier du même nom</span><br>
+                                git clone https://github.com/user/repo.git<br><br>
+                                <span class="text-green-400"># Clone dans un dossier spécifique</span><br>
+                                git clone https://github.com/user/repo.git dossier-cible
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Remote Repos -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-green-50 border-b border-green-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-project-diagram text-green-500 mr-2"></i>Afficher les dépôts distants
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Visualise les connexions entre votre dépôt local et les dépôts
+                            distants.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Liste les dépôts distants avec leurs URLs</span><br>
+                                git remote -v
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Remote -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-green-50 border-b border-green-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-link text-green-500 mr-2"></i>Ajouter un dépôt distant
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Établit une connexion avec un serveur distant pour partager votre
+                            code.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Associe un dépôt distant nommé "origin"</span><br>
+                                git remote add origin https://github.com/user/repo.git
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modifications Section -->
+        <section id="modifications" class="mb-12">
+            <div class="flex items-center mb-6">
+                <h2 class="text-3xl font-bold">
+                    <i class="fas fa-edit text-yellow-500 mr-3"></i>Modifications
+                </h2>
+                <span
+                    class="ml-auto bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">Quotidien</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Status -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-yellow-50 border-b border-yellow-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-info-circle text-yellow-500 mr-2"></i>Vérifier l'état des fichiers
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Commande fondamentale pour voir quels fichiers ont été modifiés et
+                            quel est leur statut.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Affiche l'état actuel du dépôt</span><br>
+                                git status
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Files -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-yellow-50 border-b border-yellow-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-plus text-yellow-500 mr-2"></i>Ajouter des fichiers à l'index
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Prépare les modifications pour le prochain commit en les plaçant
+                            dans la zone de staging.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Ajoute un fichier spécifique</span><br>
+                                git add fichier.txt<br><br>
+                                <span class="text-green-400"># Ajoute tous les fichiers modifiés ou supprimés</span><br>
+                                git add .<br><br>
+                                <span class="text-green-400"># Ajoute tous les fichiers, y compris les nouveaux</span><br>
+                                git add -A
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commit -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-yellow-50 border-b border-yellow-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-save text-yellow-500 mr-2"></i>Commiter les modifications
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Enregistre de façon permanente les modifications dans l'historique
+                            du projet.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Crée un commit avec un message descriptif</span><br>
+                                git commit -m "Message de commit"<br><br>
+                                <span class="text-green-400"># Ajoute automatiquement les fichiers modifiés</span><br>
+                                git commit -a -m "Message"
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amend Commit -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-yellow-50 border-b border-yellow-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-pen text-yellow-500 mr-2"></i>Modifier le dernier commit
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Permet de corriger une erreur dans le dernier commit sans créer un
+                            nouveau commit.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Change le message du dernier commit</span><br>
+                                git commit --amend -m "Nouveau message"<br><br>
+                                <span class="text-green-400"># Ajoute des modifications sans changer le message</span><br>
+                                git commit --amend --no-edit
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Branches Section -->
+        <section id="branches" class="mb-12">
+            <div class="flex items-center mb-6">
+                <h2 class="text-3xl font-bold">
+                    <i class="fas fa-code-branch text-purple-500 mr-3"></i>Branches
+                </h2>
+                <span
+                    class="ml-auto bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Avancé</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- List Branches -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-purple-50 border-b border-purple-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-list-ol text-purple-500 mr-2"></i>Lister les branches
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Donne une vue d'ensemble des branches disponibles dans le projet.
+                        </p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Liste les branches locales</span><br>
+                                git branch<br><br>
+                                <span class="text-green-400"># Liste toutes les branches (locales et distantes)</span><br>
+                                git branch -a<br><br>
+                                <span class="text-green-400"># Liste les branches avec le dernier commit</span><br>
+                                git branch -v
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Create Branch -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-purple-50 border-b border-purple-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-plus text-purple-500 mr-2"></i>Créer une branche
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Permet de développer de nouvelles fonctionnalités sans affecter la
+                            branche principale.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Crée une nouvelle branche sans y basculer</span><br>
+                                git branch nouvelle-branche<br><br>
+                                <span class="text-green-400"># Crée une nouvelle branche et y bascule</span><br>
+                                git checkout -b nouvelle-branche
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Switch Branch -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-purple-50 border-b border-purple-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-exchange-alt text-purple-500 mr-2"></i>Changer de branche
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Bascule entre différentes versions ou fonctionnalités du projet.
+                        </p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Bascule vers une branche existante (ancienne méthode)</span><br>
+                                git checkout branche-existante<br><br>
+                                <span class="text-green-400"># Bascule vers une branche existante (nouvelle méthode)</span><br>
+                                git switch branche-existante
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Merge Branches -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-purple-50 border-b border-purple-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-code-merge text-purple-500 mr-2"></i>Fusionner des branches
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Intègre les modifications d'une branche dans une autre.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Fusionne une branche dans la branche actuelle</span><br>
+                                git merge autre-branche<br><br>
+                                <span class="text-green-400"># Fusionne en créant un commit de fusion</span><br>
+                                git merge --no-ff autre-branche
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Historique Section -->
+        <section id="historique" class="mb-12">
+            <div class="flex items-center mb-6">
+                <h2 class="text-3xl font-bold">
+                    <i class="fas fa-history text-red-500 mr-3"></i>Historique
+                </h2>
+                <span class="ml-auto bg-red-100 text-red-800 text-sm font-medium px-3 py-1 rounded-full">Debug</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- View History -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-red-50 border-b border-red-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-scroll text-red-500 mr-2"></i>Afficher l'historique
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Explore l'évolution du projet à travers ses commits.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Affiche l'historique complet</span><br>
+                                git log<br><br>
+                                <span class="text-green-400"># Affiche les 5 derniers commits</span><br>
+                                git log -n 5<br><br>
+                                <span class="text-green-400"># Format condensé (une ligne par commit)</span><br>
+                                git log --oneline<br><br>
+                                <span class="text-green-400"># Historique sous forme de graphe</span><br>
+                                git log --graph
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View Specific Commit -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-red-50 border-b border-red-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-search text-red-500 mr-2"></i>Voir un commit spécifique
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600 mb-4">Examine en détail les modifications apportées par un commit
+                            particulier.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                            <code class="text-gray-200">
+                                <span class="text-green-400"># Affiche les détails d'un commit</span><br>
+                                git show commit-hash
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bonnes Pratiques Section -->
+        <section id="bonnes-pratiques" class="mb-12">
+            <div class="flex items-center mb-6">
+                <h2 class="text-3xl font-bold">
+                    <i class="fas fa-gem text-teal-500 mr-3"></i>Bonnes pratiques Git
+                </h2>
+                <span class="ml-auto bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">Pro</span>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6">
+                <!-- Commit Rules -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-teal-50 border-b border-teal-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-check-circle text-teal-500 mr-2"></i>Règles d'or des commits
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="mb-4">
+                            <h4 class="font-medium mb-2">1. Messages explicatifs :</h4>
+                            <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto mb-2">
+                                <code class="text-gray-200">
+                                    <span class="text-red-400"># ❌ À éviter</span><br>
+                                    git commit -m "Corrections"<br><br>
+                                    <span class="text-green-400"># ✅ Bonne pratique</span><br>
+                                    git commit -m "Fix: résoudre le bug de calcul dans checkout.js"
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="font-medium mb-2">2. Commits atomiques :</h4>
+                            <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                                <code class="text-gray-200">
+                                    <span class="text-green-400"># Un commit = une modification logique</span><br>
+                                    git add src/utils/calculator.js<br>
+                                    git commit -m "Feat: ajouter la fonction de calcul TVA"
+                                </code>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium mb-2">3. Convention de messages :</h4>
+                            <div class="bg-gray-100 border border-gray-200 rounded-lg p-4">
+                                <pre class="text-gray-800">
+&lt;type&gt;: &lt;description&gt;
+
+[body optionnel]
+
+Types recommandés :
+- feat : Nouvelle fonctionnalité
+- fix : Correction de bug
+- docs : Documentation
+- style : Formatage
+- refactor : Réorganisation du code
+- test : Tests</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommended Workflow -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-5 bg-teal-50 border-b border-teal-100">
+                        <h3 class="font-semibold text-lg flex items-center">
+                            <i class="fas fa-random text-teal-500 mr-2"></i>Workflow recommandé
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="mb-4">
+                            <h4 class="font-medium mb-2">1. Avant de commencer :</h4>
+                            <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                                <code class="text-gray-200">
+                                    <span class="text-green-400"># Mettre à jour en local</span><br>
+                                    git pull --rebase origin main
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="font-medium mb-2">2. Pendant le développement :</h4>
+                            <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                                <code class="text-gray-200">
+                                    <span class="text-green-400"># Ajouter les changements par portions</span><br>
+                                    git add -p<br><br>
+                                    <span class="text-green-400"># Vérifier son commit avant validation</span><br>
+                                    git commit -v
+                                </code>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium mb-2">3. Avant de pusher :</h4>
+                            <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                                <code class="text-gray-200">
+                                    <span class="text-green-400"># Relire l'historique</span><br>
+                                    git log --oneline origin/main..HEAD<br><br>
+                                    <span class="text-green-400"># Vérifier les modifications</span><br>
+                                    git diff origin/main
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-12 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm">
+            <p>Documentation Git Complète - © 2023 - Mise à jour régulière</p>
+            <p class="mt-2">Utilisez Git avec sagesse et partagez vos connaissances !</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
